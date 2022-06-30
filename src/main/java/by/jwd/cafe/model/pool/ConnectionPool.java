@@ -34,7 +34,6 @@ public class ConnectionPool {
     private static Lock instanceLocker = new ReentrantLock();
     private BlockingQueue<ProxyConnection> freeConnections = new LinkedBlockingQueue<>(POOL_SIZE);
     private BlockingQueue<ProxyConnection> usedConnections = new LinkedBlockingQueue<>(POOL_SIZE);
-    //todo можно добавить TimerTask, который будет проверять, чтобы в сумме Connection было 8
 
     static {
         try {

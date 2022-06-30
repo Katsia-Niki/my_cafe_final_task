@@ -24,7 +24,7 @@ public class RemoveItemFromCartCommand implements Command {
         MenuItemService service = MenuItemServiceImpl.getInstance();
         boolean result = service.removeItemFromCart(cart, menuItemIdToRemove);
         if (!result) {
-            logger.error("Invalid menu item id to remove."); //fixme может удалить?
+            logger.error("Invalid menu item id to remove.");
         }
         BigDecimal cartSum = service.calculateCartSum(cart);
         session.setAttribute(SessionAttribute.CART_SUM, cartSum);
