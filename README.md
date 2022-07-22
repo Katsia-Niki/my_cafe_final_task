@@ -25,3 +25,10 @@ A customer makes an order in the café. He inputs time for picking up. The appli
 |Add new admins|-|-|+|
 |Find by different parameters and update orders|-|-|+|
 |Block\unblock customers|-|-|+|
+
+## Database schema
+</p>
+<p align="center">
+  <kbd> <img alt="Database" src="https://github.com/Katsia-Niki/my_cafe_final_task/blob/images/db_schema_cafe.png" width="800" style="border-radius:10px"\></kbd> 
+</p>
+
