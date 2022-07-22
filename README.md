@@ -1,5 +1,7 @@
 # Cafe
 
+A customer makes an order in the café. He inputs time for picking up. The application shows order sum and offers to pay by account, cash or loyalty points. A customer receives loyalty points depending on payment type. The administrator manages the menu, can block\unblock customers.
+
 ## Functional roles
 ||GUEST|CUSTOMER|ADMIN|
 | :- | :-: | :-: | :-: |
