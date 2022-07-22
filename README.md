@@ -1,33 +1,25 @@
-GUEST available opportunities:
-•	sing in
-•	register
-•	look through menu 
-•	view the contact page
-•	change locale
+# Cafe
 
-CUSTOMER available opportunities:
-•	sing out
-•	look through available to order menu 
-•	change locale
-•	add menu item to a cart
-•	delete menu items from cart
-•	order menu item for a concrete time
-•	update personal data
-•	change password
-•	replenish balance
-•	look through his orders
-•	view the contact page
-•	cancel order 
-
-ADMIN available opportunities:
-•	sing out
-•	look through available to order menu 
-•	look through all menu 
-•	update personal data
-•	view the contact page
-•	change locale
-•	change password
-•	block\unblock customers
-•	add new admins
-•	find by different parameter and update orders
-•	update and create menu items
+## Functional roles
+||GUEST|CUSTOMER|ADMIN|
+| :- | :-: | :-: | :-: |
+|Register|+|-|-|
+|Sign in|-|+|+|
+|Sign out|-|+|+|
+|Look through available to order menu|+|+|+|
+|View contact page|+|+|+|
+|Change locale|+|+|+|
+|Update personal data|-|+|+|
+|Change password|-|+|+|
+|Add menu item to a cart|-|+|-|
+|Delete menu item from cart|-|+|-|
+|Order menu items for a concrete time|-|+|-|
+|Cancel order|-|+|+|
+|Look through his orders|-|+|-|
+|Replenish balance|-|+|-|
+|Look through all menu|-|-|+|
+|Update menu items|-|-|+|
+|Create new menu items|-|-|+|
+|Add new admins|-|-|+|
+|Find by different parameters and update orders|-|-|+|
+|Block\unblock customers|-|-|+|
