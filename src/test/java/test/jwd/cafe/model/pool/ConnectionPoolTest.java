@@ -1,4 +1,4 @@
-package test.jwd.cafe.pool;
+package test.jwd.cafe.model.pool;
 
 import by.jwd.cafe.model.pool.ConnectionPool;
 import org.testng.Assert;
