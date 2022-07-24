@@ -23,8 +23,20 @@ public interface MenuItemService {
      */
     List<MenuItem> findAllMenuItems(int currentPageNumber) throws ServiceException;
 
+    /**
+     * Finds number of all pages
+     *
+     * @return number of all pages
+     * @throws ServiceException - if dao method throw {@link by.jwd.cafe.exception.DaoException}
+     */
     int findNumberOfPages() throws ServiceException;
 
+    /**
+     * Finds number of all available pages
+     *
+     * @return number of all available pages
+     * @throws ServiceException - if dao method throw {@link by.jwd.cafe.exception.DaoException}
+     */
     int findNumberOfAvailablePages() throws ServiceException;
 
     /**
