@@ -79,6 +79,7 @@
         </c:when>
         <c:when test="${not empty update_personal_data_result}">
             ${update_personal_data_result eq true? complete_changing: failed}
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </c:when>
         <c:when test="${empty user_data_ses}">
             ${no_data}

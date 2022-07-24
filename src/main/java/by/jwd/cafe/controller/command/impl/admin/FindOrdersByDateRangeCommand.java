@@ -37,7 +37,6 @@ public class FindOrdersByDateRangeCommand implements Command {
         try {
             List<Order> orders = service.findOrdersByDateRange(searchParameters);
             Map<Integer, Boolean> canBeUpdatedMap = service.createCanBeUpdatedMap(orders);
-            System.out.println(canBeUpdatedMap);
             request.setAttribute(CAN_BE_UPDATED_MAP, canBeUpdatedMap);
             request.setAttribute(ORDER_LIST, orders);
             request.setAttribute(SEARCH_PARAMETERS_ATTRIBUTE, searchParameters);

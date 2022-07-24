@@ -30,14 +30,12 @@ public class GoToCancelOrderPageCommand implements Command {
         session.removeAttribute(UPDATE_ORDER_RESULT);
 
         String orderId = request.getParameter(RequestParameter.ORDER_ID);
-        System.out.println(orderId);
         OrderService orderService = OrderServiceImpl.getInstance();
         MenuItemService menuItemService = MenuItemServiceImpl.getInstance();
 
         Router router;
         try {
             Optional<Order> optionalOrder = orderService.findOrderById(orderId);
-            System.out.println(optionalOrder);
             if (optionalOrder.isPresent()) {
                 Order order = optionalOrder.get();
                 String menuItemId = String.valueOf(order.getOrderId());

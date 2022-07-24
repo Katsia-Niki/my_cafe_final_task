@@ -44,6 +44,7 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String commandName = request.getParameter(RequestParameter.COMMAND);
+        logger.info(commandName);
         Command command = CommandProvider.of(commandName);
         try {
             Router router = command.execute(request);
