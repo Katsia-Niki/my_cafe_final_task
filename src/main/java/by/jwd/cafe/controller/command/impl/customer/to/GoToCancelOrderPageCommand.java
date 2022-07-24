@@ -42,7 +42,6 @@ public class GoToCancelOrderPageCommand implements Command {
                 Optional<MenuItem> optionalMenuItem = menuItemService.findMenuItemById(menuItemId);
                 MenuItem menuItem = optionalMenuItem.get();
                 session.setAttribute(ORDER_SESSION, order);
-                System.out.println(order);
                 session.setAttribute(MENU_ITEM_SESSION, menuItem);
             } else {
                 session.setAttribute(WRONG_ORDER_ID_SESSION, true);
