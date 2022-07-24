@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class UserValidatorImplTest {
-    private final UserValidator validator = UserValidatorImpl.getInstance();
+    UserValidator validator = UserValidatorImpl.getInstance();
 
     @DataProvider(name = "emailProvider")
     public Object[][] createData() {
