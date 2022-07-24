@@ -41,7 +41,7 @@ public final class MenuItemValidatorImpl implements MenuItemValidator {
     @Override
     public boolean validateType(String menuItemType) {
         try {
-            MenuItemType.valueOfMenuItemType(menuItemType.toUpperCase());
+            MenuItemType.valueOfMenuItemType(menuItemType);
         } catch (IllegalArgumentException e) {
             return false;
         }
