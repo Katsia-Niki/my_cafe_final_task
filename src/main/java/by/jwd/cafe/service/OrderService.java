@@ -85,6 +85,14 @@ public interface OrderService {
      */
     boolean updateStatus(String role, String newStatus, Order order) throws ServiceException;
 
+    /**
+     * Calculates loyalty points, depends on payment type.
+     *
+     * @param cartSum     - value of cart sum
+     * @param paymentType - {@link PaymentType} object
+     * @return the number of loyalty points, that customer gets for the order
+     * @throws ServiceException - if dao method throw {@link by.jwd.cafe.exception.DaoException}
+     */
     BigDecimal calculateLoyaltyPoints(BigDecimal cartSum, PaymentType paymentType);
 
     /**
