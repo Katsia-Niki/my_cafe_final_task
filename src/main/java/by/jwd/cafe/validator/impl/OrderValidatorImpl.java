@@ -29,25 +29,6 @@ public final class OrderValidatorImpl implements OrderValidator {
         return instance;
     }
 
-//    @Override
-//    public boolean validateOrderData2(String paymentTypeStr, String pickUpTimeStr, BigDecimal balance, BigDecimal loyaltyPoints, BigDecimal cartSum) {
-//        boolean isValid = false;
-//        PaymentType paymentType;
-//        try {
-//            paymentType = PaymentType.valueOf((paymentTypeStr).toUpperCase());
-//            LocalDateTime pickUpTime = LocalDateTime.parse(pickUpTimeStr);
-//        } catch (IllegalArgumentException | DateTimeParseException e) {
-//            logger.error("Not valid order data.", e);
-//            return isValid;
-//        }
-//        switch (paymentType) {
-//            case CASH -> isValid = true;
-//            case ACCOUNT -> isValid = balance.compareTo(cartSum) >= 0 ? true : false;
-//            case LOYALTY_POINTS -> isValid = loyaltyPoints.compareTo(cartSum) >= 0 ? true : false;
-//        }
-//        return isValid;
-//    }
-
     @Override
     public boolean validateOrderData(Map<String, String> orderData, BigDecimal balance, BigDecimal loyaltyPoints) {
         boolean isValid = false;
@@ -117,16 +98,6 @@ public final class OrderValidatorImpl implements OrderValidator {
         return isValid;
     }
 
-    private boolean validateStatusForAdmin(Order.Status oldStatus, Order.Status newStatus) {
-        boolean isValid;
-        isValid = switch (oldStatus) {
-            case ACTIVE -> newStatus == IN_PROCESS || newStatus == CANCELLED_BY_ADMIN;
-            case IN_PROCESS -> newStatus == FINISHED || newStatus == CANCELLED_BY_ADMIN;
-            default -> false;
-        };
-        return isValid;
-    }
-
     @Override
     public boolean validateDateRange(String dateFrom, String dateTo) {
         boolean isValid = false;
@@ -135,8 +106,18 @@ public final class OrderValidatorImpl implements OrderValidator {
             LocalDate to = LocalDate.parse(dateTo);
             isValid = from.compareTo(to) <= 0;
         } catch (DateTimeParseException e) {
-         logger.error("Invalid date range.");
+            logger.error("Invalid date range.");
         }
+        return isValid;
+    }
+
+    private boolean validateStatusForAdmin(Order.Status oldStatus, Order.Status newStatus) {
+        boolean isValid;
+        isValid = switch (oldStatus) {
+            case ACTIVE -> newStatus == IN_PROCESS || newStatus == CANCELLED_BY_ADMIN;
+            case IN_PROCESS -> newStatus == FINISHED || newStatus == CANCELLED_BY_ADMIN;
+            default -> false;
+        };
         return isValid;
     }
 }
