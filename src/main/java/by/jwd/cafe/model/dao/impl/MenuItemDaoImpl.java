@@ -7,7 +7,6 @@ import by.jwd.cafe.model.dao.mapper.Mapper;
 import by.jwd.cafe.model.dao.mapper.impl.ItemMapper;
 import by.jwd.cafe.model.entity.MenuItem;
 import by.jwd.cafe.model.pool.ConnectionPool;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

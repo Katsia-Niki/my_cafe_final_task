@@ -2,10 +2,8 @@ package by.jwd.cafe.service.impl;
 
 import by.jwd.cafe.exception.DaoException;
 import by.jwd.cafe.exception.ServiceException;
-import by.jwd.cafe.model.dao.MenuItemDao;
 import by.jwd.cafe.model.dao.OrderDao;
 import by.jwd.cafe.model.dao.UserDao;
-import by.jwd.cafe.model.dao.impl.MenuItemDaoImpl;
 import by.jwd.cafe.model.dao.impl.OrderDaoImpl;
 import by.jwd.cafe.model.dao.impl.UserDaoImpl;
 import by.jwd.cafe.model.entity.MenuItem;
