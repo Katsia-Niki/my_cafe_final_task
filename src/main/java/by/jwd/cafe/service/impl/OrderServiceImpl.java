@@ -193,7 +193,7 @@ public class OrderServiceImpl implements OrderService {
         }
         try {
             LocalDate from = LocalDate.parse(tempDateFrom);
-            LocalDate to = LocalDate.parse(temDateTo);
+            LocalDate to = LocalDate.parse(temDateTo).plusDays(1);
             orders = orderDao.findOrdersByDateRange(from, to);
         } catch (DaoException e) {
             logger.error("Try to find orders by date range was failed.", e);
