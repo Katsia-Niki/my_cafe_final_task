@@ -101,6 +101,9 @@
                                                                                 <input type="hidden"
                                                                                        name="menu_item_id"
                                                                                        value="${menu.menuItemId}">
+                                                                                <input type="hidden"
+                                                                                       name="page"
+                                                                                       value="${current_page_number}">
                                                                                 <br>
                                                                                 <div class="product_actions">
                                                                                     <div class="number"

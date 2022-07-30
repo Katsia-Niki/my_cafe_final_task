@@ -30,7 +30,6 @@ public class FindAllAvailableMenuCommand implements Command {
         int currentPageNumber = parseIntParameter(request.getParameter(RequestParameter.PAGE)) != 0
                 ? parseIntParameter(request.getParameter(RequestParameter.PAGE))
                 : RequestParameter.DEFAULT_PAGE_NUMBER;
-
         MenuItemService service = MenuItemServiceImpl.getInstance();
         Router router;
         try {
@@ -38,7 +37,7 @@ public class FindAllAvailableMenuCommand implements Command {
             int numberOfPages = service.findNumberOfAvailablePages();
             session.setAttribute(MENU_ITEM_AVAILABLE_SESSION, menu);
             session.setAttribute(CURRENT_PAGE, Command.extractPage(request));
-            request.setAttribute(NUMBER_OF_PAGES, numberOfPages);
+            session.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             request.setAttribute(CURRENT_PAGE_NUMBER, currentPageNumber);
             router = new Router(PagePath.MENU);
         } catch (ServiceException e) {

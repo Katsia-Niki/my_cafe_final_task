@@ -12,10 +12,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static by.jwd.cafe.controller.command.RequestAttribute.CURRENT_PAGE_NUMBER;
+
 public class AddItemToCartCommand implements Command {
     @Override
     public Router execute(HttpServletRequest request) throws CommandException {
         HttpSession session = request.getSession();
+        int currentPageNumber = parseIntParameter(request.getParameter(RequestParameter.PAGE)) != 0
+                ? parseIntParameter(request.getParameter(RequestParameter.PAGE))
+                : RequestParameter.DEFAULT_PAGE_NUMBER;
         List<MenuItem> menuItemList = (List<MenuItem>) session.getAttribute(SessionAttribute.MENU_ITEM_AVAILABLE_SESSION);
         Map<MenuItem, Integer> cart = (Map<MenuItem, Integer>) session.getAttribute(SessionAttribute.CART);
         int menuItemId = Integer.parseInt(request.getParameter(RequestParameter.MENU_ITEM_ID));
@@ -31,7 +36,8 @@ public class AddItemToCartCommand implements Command {
             session.setAttribute(SessionAttribute.MESSAGE_ITEM_ADDED_TO_CART, false);
         }
         session.setAttribute(SessionAttribute.CURRENT_PAGE, Command.extractPage(request));
-        Router router = new Router(PagePath.MENU, Router.Type.REDIRECT);
+        request.setAttribute(CURRENT_PAGE_NUMBER, currentPageNumber);
+        Router router = new Router(PagePath.MENU);
         return router;
     }
 }
