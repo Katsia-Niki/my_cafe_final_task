@@ -41,7 +41,6 @@ public enum CommandType {
     GO_TO_REFILL_BALANCE_PAGE(EnumSet.of(CUSTOMER)),
     GO_TO_REGISTRATION_PAGE(EnumSet.of(GUEST)),
     GO_TO_UPDATE_ORDER_PAGE(EnumSet.of(ADMIN)),
-    GO_TO_USER_MANAGEMENT_PAGE(EnumSet.of(ADMIN)),
     LOGIN(EnumSet.of(GUEST)),
     LOGOUT(EnumSet.of(CUSTOMER, ADMIN)),
     REGISTRATION(EnumSet.of(GUEST)),

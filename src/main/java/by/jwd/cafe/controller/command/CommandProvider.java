@@ -55,7 +55,6 @@ public final class CommandProvider {
         commands.put(GO_TO_REFILL_BALANCE_PAGE, new GoToRefillBalancePageCommand());
         commands.put(GO_TO_REGISTRATION_PAGE, new GoToRegistrationPageCommand());
         commands.put(GO_TO_UPDATE_ORDER_PAGE, new GoToUpdateOrderPageCommand());
-        commands.put(GO_TO_USER_MANAGEMENT_PAGE, new GoToUserManagementPageCommand());
         commands.put(LOGIN, new LoginCommand());
         commands.put(LOGOUT, new LogoutCommand());
         commands.put(REFILL_BALANCE, new RefillBalanceCommand());

@@ -118,7 +118,13 @@
                             <button type="button" class="btn btn-light">
                                 <a class="text-secondary text-decoration-none"
                                    href="${path}/controller?command=update_user_role&user_id=${user.userId}&user_role=${user.role}">
-                                        ${user.role eq 'ADMIN' ? make_customer : make_admin}
+
+                                    <c:if test="${user.role eq 'CUSTOMER'}">
+                                        ${user.active eq true ? make_admin : " "}
+                                    </c:if>
+                                    <c:if test="${user.role eq 'ADMIN'}">
+                                        ${make_customer}
+                                    </c:if>
                                 </a>
                             </button>
                         </td>

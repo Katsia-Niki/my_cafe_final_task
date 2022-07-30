@@ -26,7 +26,6 @@ public final class PagePath {
     public static final String REFILL_BALANCE = "pages/customer/refill_balance.jsp";
     public static final String REGISTRATION = "pages/registration.jsp";
     public static final String UPDATE_ORDER = "pages/admin/update_order.jsp";
-    public static final String USER_MANAGEMENT = "pages/admin/user_management.jsp";
     public static final String USERS = "pages/admin/users.jsp";
 
     private PagePath() {
