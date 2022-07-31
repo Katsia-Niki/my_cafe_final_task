@@ -172,13 +172,8 @@
                             <label for="available" class="col col-form-label">${available}</label>
                             <div class="col">
                                 <select id="available" class="form-control" required name="menu_item_is_available">
-                                    <option selected>${menu_item_data_ses['menu_item_available_ses'] ? in_menu : unavailable}</option>
-                                    <c:if test="${menu_item_data_ses['menu_item_available_ses']}">
-                                        <option value="false">${unavailable}</option>
-                                    </c:if>
-                                    <c:if test="${!menu_item_data_ses['menu_item_available_ses']}">
-                                        <option value="true">${in_menu}</option>
-                                    </c:if>
+                                    <option selected value="true">${in_menu}</option>
+                                    <option value="false">${unavailable}</option>
                                 </select>
                             </div>
                         </div>
