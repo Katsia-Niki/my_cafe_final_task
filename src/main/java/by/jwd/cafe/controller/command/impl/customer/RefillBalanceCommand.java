@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 import static by.jwd.cafe.controller.command.SessionAttribute.*;
@@ -34,6 +35,10 @@ public class RefillBalanceCommand implements Command {
             int sizeAfter = balanceData.size();
             if (sizeBefore == sizeAfter) {
                 session.setAttribute(REFILL_BALANCE_RESULT, result);
+                String oldBalance = balanceData.get(BALANCE_SESSION);
+                String refillAmount = balanceData.get(REFILL_AMOUNT_SESSION);
+                BigDecimal newBalance = new BigDecimal(oldBalance).add(new BigDecimal(refillAmount));
+                session.setAttribute(CURRENT_BALANCE, newBalance.toString());
                 session.removeAttribute(BALANCE_DATA_SESSION);
             } else {
                 session.setAttribute(BALANCE_DATA_SESSION, balanceData);

@@ -112,11 +112,6 @@
                         </tfoot>
                     </table>
                     <br>
-                    <div>
-                        <h6>${your_balance} ${current_balance}<br>
-                                ${your_loyalty_points} ${current_loyalty_points}</h6>
-                        <br>
-                    </div>
                     <form name="OrderInputInfoForm" method="post" action="${path}/controller">
                         <h4>${choose_type}</h4>
                         <input type="hidden" name="command" value="confirm_order"/>

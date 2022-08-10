@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ConfirmOrderCommand implements Command {
@@ -29,7 +30,7 @@ public class ConfirmOrderCommand implements Command {
         try {
             boolean isConfirmed = service.createOrder(orderData, cart);
             if (isConfirmed) {
-                session.removeAttribute(SessionAttribute.CART);
+                session.setAttribute(SessionAttribute.CART, new HashMap<>());
             }
             session.setAttribute(SessionAttribute.ORDER_CONFIRMED_MESSAGE, isConfirmed);
             session.setAttribute(SessionAttribute.CURRENT_PAGE, PagePath.PLACE_ORDER);

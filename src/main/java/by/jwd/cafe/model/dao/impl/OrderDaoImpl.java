@@ -6,6 +6,7 @@ import by.jwd.cafe.model.dao.mapper.Mapper;
 import by.jwd.cafe.model.dao.mapper.impl.OrderMapper;
 import by.jwd.cafe.model.entity.MenuItem;
 import by.jwd.cafe.model.entity.Order;
+import by.jwd.cafe.model.entity.PaymentType;
 import by.jwd.cafe.model.pool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -212,19 +213,34 @@ public class OrderDaoImpl implements OrderDao {
             Order.Status currentStatus = order.getStatus();
             switch (currentStatus) {
                 case CANCELLED_BY_ADMIN, CANCELLED_BY_CUSTOMER -> {
-                    if (order.isPaid()) {
-                        statement = connection.prepareStatement(UPDATE_USER_BALANCE_AND_LOYALTY_POINTS);
-                        BigDecimal newBalance = userBalance.add(order.getOrderCost());
-                        BigDecimal percentLoyaltyPoints = new BigDecimal(order.getPaymentType().getPercentLoyaltyPoints());
-                        BigDecimal loyaltyPointsForOrder = order.getOrderCost().multiply(percentLoyaltyPoints.divide(new BigDecimal(100)));
-                        loyaltyPointsForOrder = loyaltyPointsForOrder.setScale(2, RoundingMode.HALF_UP);
-                        BigDecimal newLoyaltyPoints = userLoyaltyPoints.subtract(loyaltyPointsForOrder);
 
-                        statement.setBigDecimal(1, newBalance); //баланс юзера плюс стоимость заказа
-                        statement.setBigDecimal(2, newLoyaltyPoints); //баллы юзера минус баллы за заказ
-                        statement.setInt(3, order.getUserId());
-                        statement.executeUpdate();
+                    statement = connection.prepareStatement(UPDATE_USER_BALANCE_AND_LOYALTY_POINTS);
+                    BigDecimal newBalance = userBalance;
+                    PaymentType paymentType = order.getPaymentType();
+                    BigDecimal newLoyaltyPoints = userLoyaltyPoints;
+                    BigDecimal percentLoyaltyPoints = new BigDecimal(paymentType.getPercentLoyaltyPoints());
+                    BigDecimal loyaltyPointsForOrder = order.getOrderCost().multiply(percentLoyaltyPoints.divide(new BigDecimal(100)));
+                    loyaltyPointsForOrder = loyaltyPointsForOrder.setScale(2, RoundingMode.HALF_UP);
+                    switch (paymentType) {
+
+                        case ACCOUNT -> {
+                            newBalance = userBalance.add(order.getOrderCost());
+                            newLoyaltyPoints = userLoyaltyPoints.subtract(loyaltyPointsForOrder);
+                            break;
+                        }
+                        case LOYALTY_POINTS -> {
+                            newLoyaltyPoints = userLoyaltyPoints.add(order.getOrderCost());
+                            break;
+                        }
+                        case CASH -> {
+                            newLoyaltyPoints = userLoyaltyPoints.subtract(loyaltyPointsForOrder);
+                            break;
+                        }
                     }
+                    statement.setBigDecimal(1, newBalance);
+                    statement.setBigDecimal(2, newLoyaltyPoints);
+                    statement.setInt(3, order.getUserId());
+                    statement.executeUpdate();
                 }
             }
             result = true;
