@@ -2,6 +2,11 @@
 
 A customer makes an order in the café. He inputs time for picking up. The application shows order sum and offers to pay by account, cash or loyalty points. A customer receives loyalty points depending on payment type. The administrator manages the menu, can block\unblock customers.
 
+![скрин1](https://github.com/user-attachments/assets/7234cf63-34bd-43d3-ae1f-3043ffe42b52)
+![скрин2](https://github.com/user-attachments/assets/368d9932-ef72-445b-9278-d7d0fb819b41)
+![скрин5_menu](https://github.com/user-attachments/assets/8aa85381-0af3-4357-a9dd-a10bd989dfb7)
+
+
 ## Functional roles
 ||GUEST|CUSTOMER|ADMIN|
 | :- | :-: | :-: | :-: |
@@ -31,4 +36,5 @@ A customer makes an order in the café. He inputs time for picking up. The appli
 <p align="center">
   <kbd> <img alt="Database" src="https://user-images.githubusercontent.com/82093777/180476009-f9e2c73c-57ae-49cf-8f8f-0561eaf6bd78.png" width="800" style="border-radius:10px"\></kbd> 
 </p>
+
 
